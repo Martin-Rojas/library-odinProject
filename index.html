@@ -1,30 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-    <nav>
+      <nav>
         <h1>Library</h1>
-        <button>+ Add Book</button>
-    </nav>
-    <article>
-        <h3>Total Books: <span>5</span></h3>
-        <p>Read: 2</p>
-        <p>Reading: 2</p>
-        <p>Unread: 1</p>
-    </article>
-    <main>
-        <h2>Harry Potter and the Order of the Phoenix</h2>
-        <p>By <span>J.K Rowling</span></p>
-        <p>status: reading</p>
-        <p>800 pages</p>
-        <button></button>
-    </main>
+        <button type="submit">Add Book</button>
+      </nav>
+      <article>
+        <div class="status-data">
+          <h3>Total Books: <span id="total-books">5</span></h3>
+          <p>Read: <span id="read-number">2</span></p>
+          <p>Reading: <span id="reading-number">2</span></p>
+          <p>Unread: <span id="unread-number">1</span></p>
+        </div>
+      </article>
+      <main>
+        <div class="card">
+          <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
+          <p>By <span id="author">J.K Rowling</span></p>
+          <p>status: <span id="status">reading</span></p>
+          <div class="bottom-info">
+            <p><span id="pages-number">800</span> pages</p>
+            <button class="delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <!------------------------------------------ ---------------------------------->
+        <div class="card">
+            <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
+            <p>By <span id="author">J.K Rowling</span></p>
+            <p>status: <span id="status">reading</span></p>
+            <div class="bottom-info">
+              <p><span id="pages-number">800</span> pages</p>
+              <button class="delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <!------------------------------------------ ---------------------------------->
+          <div class="card">
+            <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
+            <p>By <span id="author">J.K Rowling</span></p>
+            <p>status: <span id="status">reading</span></p>
+            <div class="bottom-info">
+              <p><span id="pages-number">800</span> pages</p>
+              <button class="delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <!------------------------------------------ ---------------------------------->
+          <div class="card">
+            <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
+            <p>By <span id="author">J.K Rowling</span></p>
+            <p>status: <span id="status">reading</span></p>
+            <div class="bottom-info">
+              <p><span id="pages-number">800</span> pages</p>
+              <button class="delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <!------------------------------------------ ---------------------------------->
+          <div class="card">
+            <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
+            <p>By <span id="author">J.K Rowling</span></p>
+            <p>status: <span id="status">reading</span></p>
+            <div class="bottom-info">
+              <p><span id="pages-number">800</span> pages</p>
+              <button class="delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <!------------------------------------------ ---------------------------------->
+          <div class="card">
+            <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
+            <p>By <span id="author">J.K Rowling</span></p>
+            <p>status: <span id="status">reading</span></p>
+            <div class="bottom-info">
+              <p><span id="pages-number">800</span> pages</p>
+              <button class="delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <!------------------------------------------ ---------------------------------->
+          <div class="card">
+            <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
+            <p>By <span id="author">J.K Rowling</span></p>
+            <p>status: <span id="status">reading</span></p>
+            <div class="bottom-info">
+              <p><span id="pages-number">800</span> pages</p>
+              <button class="delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <!------------------------------------------ ---------------------------------->
+      </main>
     </div>
-</body>
+  </body>
 </html>

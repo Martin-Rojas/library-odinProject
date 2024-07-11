@@ -1,5 +1,125 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: #f0eef1;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 3fr;
+  background-color: #f0eef1;
+  height: 100vh;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  grid-column: 1/3;
+  grid-row: 1/2;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+nav h1 {
+  width: 200px;
+  margin-left: 20%;
+}
+
+nav button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 100px;
+  justify-self: end;
+  margin-right: 20%;
+  padding: 10px;
+}
+
+nav button:hover {
+  background-color: #e1dee3;
+  transform: scaleX(1.2);
+  transition: 300ms;
+}
+
+article {
+  border-right: 2px black solid;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  height: auto;
+}
+
+article .status-data {
+  margin-top: 50%;
+  margin-left: 40px;
+}
+
+article .status-data h3 {
+  margin-bottom: 5px;
+}
+
+main {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  height: auto;
+  margin: 25px 15px 10px 30px;
+}
+
+.card {
+  background-color: white;
+  border: 2px black solid;
+  border: none;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 100%;
+  height: auto;
+  padding: 1.3rem;
+  /* margin-top: 25px;
+  margin-right: 20px;
+  margin-left: 40px; */
+}
+
+.card h2,
+p {
+  margin-bottom: 10px;
+}
+
+.card .bottom-info {
+  /* border: 2px solid black; */
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  justify-content: space-between;
+}
+
+.delete {
+  width: 50%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: white;
+  transform: scaleX(1.3);
+  transition: 300ms;
+}
+
+.delete i {
+  color: red;
+}
