@@ -31,6 +31,42 @@ const myLibrary = [
     numberOfPages: `689`,
     read: `not read yet`,
   },
+  {
+    title: `The hobbit`,
+    author: `J.R.R Tolkien`,
+    numberOfPages: `800`,
+    read: `not read yet`,
+  },
+  {
+    title: `Harry Potter and the Philosopher's Stone`,
+    author: `J.K Rowling`,
+    numberOfPages: `223`,
+    read: `read`,
+  },
+  {
+    title: `A Tale of Two Cities`,
+    author: `Charles Dickens`,
+    numberOfPages: `448`,
+    read: `not read yet`,
+  },
+  {
+    title: `The Alchemist`,
+    author: `Paulo Coelho`,
+    numberOfPages: `163`,
+    read: `read`,
+  },
+  {
+    title: `The Da Vinci Code`,
+    author: `Dan Brown`,
+    numberOfPages: `689`,
+    read: `not read yet`,
+  },
+  {
+    title: `Harry Potter and the Philosopher's Stone`,
+    author: `J.K Rowling`,
+    numberOfPages: `223`,
+    read: `read`,
+  }
 ];
 
 function Book(title, author, numberOfPages, read) {
@@ -79,7 +115,6 @@ function displayLibrary(library) {
     numberOfPagesElement.appendChild(spanNumberOfPagesElement);
     bottomInfElement.appendChild(numberOfPagesElement);
 
-    // <button class="delete"><i class="fa-solid fa-trash"></i></button>
     const buttonElement = document.createElement(`button`);
     buttonElement.className = `delete`;
     const iElement = document.createElement(`i`);
@@ -94,15 +129,10 @@ function displayLibrary(library) {
 
 displayLibrary(myLibrary);
 
+// Rivise this part of code
 const theHobbit = new Book(
   "The hobbit",
   `J.R.R Tolkien`,
   `295`,
   `not read yet`
 );
-
-// const cardElement = document.createElement(`h2`);
-// const text = document.createTextNode(`Movie`);
-// cardElement.appendChild(text);
-
-// mainElement.appendChild(cardElement);
