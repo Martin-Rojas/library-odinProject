@@ -1,4 +1,7 @@
 const mainElement = document.getElementById("main");
+const openModal = document.querySelector(`.add-book`);
+const closeModal = document.querySelector(`.close-model`);
+const modal = document.querySelector(`.modal`);
 
 const myLibrary = [
   {
@@ -66,7 +69,7 @@ const myLibrary = [
     author: `J.K Rowling`,
     numberOfPages: `223`,
     read: `read`,
-  }
+  },
 ];
 
 function Book(title, author, numberOfPages, read) {
@@ -136,3 +139,14 @@ const theHobbit = new Book(
   `295`,
   `not read yet`
 );
+
+// Open a modal for add a new book
+openModal.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.classList.add(`modal--show`);
+});
+
+closeModal.addEventListener(`click`, () => {
+  e.preventDefault();
+  modal.classList.remove(`modal--show`);
+});

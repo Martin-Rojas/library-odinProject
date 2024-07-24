@@ -17,7 +17,7 @@
     <div class="container">
       <nav>
         <h1>Library</h1>
-        <button type="submit">Add Book</button>
+        <button type="submit" class="add-book">Add Book</button>
       </nav>
       <article>
         <div class="total-books">
@@ -38,6 +38,42 @@
           </div>
         </div>
       </main>
+
+      <section class="modal">
+        <div class="modal-container">
+          <h2>New Book</h2>
+          <form action="#" method="get">
+            <label for="book-title">Title</label>
+            <input
+              type="text"
+              id="book-title"
+              name="book-title"
+              placeholder="Title.."
+            />
+
+            <label for="book-author">Author</label>
+            <input
+              type="text"
+              id="book-author"
+              name="book-author"
+              placeholder="Author.."
+            />
+
+            <label for="pages">Pages</label>
+            <input type="text" id="pages" name="pages" placeholder="Pages.." />
+
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="read">Read</option>
+              <!-- <option value="reading">Reading</option> -->
+              <option value="no-reading">No Read</option>
+            </select>
+
+            <input type="submit" value="Submit" />
+          </form>
+          <button class="close-model">Close</button>
+        </div>
+      </section>
     </div>
     <script src="./app.js"></script>
   </body>
