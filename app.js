@@ -2,6 +2,14 @@ const mainElement = document.getElementById("main");
 const openModal = document.querySelector(`.add-book`);
 const closeModal = document.querySelector(`.close-model`);
 const modal = document.querySelector(`.modal`);
+const bookTitle = document.querySelector(`#book-title`);
+const bookForm = document.querySelector(`#book-form`);
+
+let formData = new FormData(bookForm);
+
+// let name = document.forms[0].book-title.value;
+// //var Customer_Name = document.forms[0].customer_name.value;
+// console.log(name);
 
 const myLibrary = [
   {
@@ -79,7 +87,11 @@ function Book(title, author, numberOfPages, read) {
   this.read = read;
 }
 
-function addBookToLibrary() {}
+function addBookToLibrary(title, author, numberOfPages, read) {
+  let newBook = new Book(title, author, numberOfPages, read);
+
+  myLibrary.push(newBook);
+}
 
 function displayLibrary(library) {
   library.forEach((book) => {
@@ -146,7 +158,28 @@ openModal.addEventListener("click", (e) => {
   modal.classList.add(`modal--show`);
 });
 
-closeModal.addEventListener(`click`, () => {
+// Close a modal
+closeModal.addEventListener(`click`, (e) => {
   e.preventDefault();
   modal.classList.remove(`modal--show`);
+});
+
+bookForm.addEventListener(`submit`, (e) => {
+  e.preventDefault();
+  alert(bookTitle.value);
+  console.log(document.forms[0].bookTitle.value);
+  let title = document.forms[0].bookTitle.value;
+  let author = document.forms[0].bookAuthor.value;
+  let pages = document.forms[0].pages.value;
+  let status = document.forms[0].status.value;
+
+  addBookToLibrary(title, author, pages, status);
+
+  displayLibrary(myLibrary);
+
+  /*localStorage.setItem(`title`, title);
+  localStorage.setItem(`author`, author);
+  localStorage.setItem(`pages`, pages);
+  localStorage.setItem(`status`, status);*/
+  // console.dir(bookTitle);
 });
