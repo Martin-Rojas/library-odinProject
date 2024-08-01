@@ -5,74 +5,79 @@ const modal = document.querySelector(`.modal`);
 const bookTitle = document.querySelector(`#book-title`);
 const bookForm = document.querySelector(`#book-form`);
 
-let formData = new FormData(bookForm);
-
-// let name = document.forms[0].book-title.value;
-// //var Customer_Name = document.forms[0].customer_name.value;
-// console.log(name);
-
-const myLibrary = [
+let myLibrary = [
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `The hobbit`,
     author: `J.R.R Tolkien`,
     numberOfPages: `800`,
     read: `not read yet`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `Harry Potter and the Philosopher's Stone`,
     author: `J.K Rowling`,
     numberOfPages: `223`,
     read: `read`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `A Tale of Two Cities`,
     author: `Charles Dickens`,
     numberOfPages: `448`,
     read: `not read yet`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `The Alchemist`,
     author: `Paulo Coelho`,
     numberOfPages: `163`,
     read: `read`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `The Da Vinci Code`,
     author: `Dan Brown`,
     numberOfPages: `689`,
     read: `not read yet`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `The hobbit`,
     author: `J.R.R Tolkien`,
     numberOfPages: `800`,
     read: `not read yet`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `Harry Potter and the Philosopher's Stone`,
     author: `J.K Rowling`,
     numberOfPages: `223`,
     read: `read`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `A Tale of Two Cities`,
     author: `Charles Dickens`,
     numberOfPages: `448`,
     read: `not read yet`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `The Alchemist`,
     author: `Paulo Coelho`,
     numberOfPages: `163`,
     read: `read`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `The Da Vinci Code`,
     author: `Dan Brown`,
     numberOfPages: `689`,
     read: `not read yet`,
   },
   {
+    id: "B" + Math.round(1000 * Math.random(1)),
     title: `Harry Potter and the Philosopher's Stone`,
     author: `J.K Rowling`,
     numberOfPages: `223`,
@@ -81,6 +86,7 @@ const myLibrary = [
 ];
 
 function Book(title, author, numberOfPages, read) {
+  this.id = "B" + Math.round(1000 * Math.random(1));
   this.title = title;
   this.author = author;
   this.numberOfPages = numberOfPages;
@@ -89,12 +95,14 @@ function Book(title, author, numberOfPages, read) {
 
 function addBookToLibrary(title, author, numberOfPages, read) {
   let newBook = new Book(title, author, numberOfPages, read);
-
+  mainElement.innerHTML = ``;
   myLibrary.push(newBook);
 }
 
 function displayLibrary(library) {
   library.forEach((book) => {
+    let id = book.id;
+
     const cardElement = document.createElement("div");
     cardElement.className = "card";
 
@@ -138,19 +146,21 @@ function displayLibrary(library) {
     bottomInfElement.appendChild(buttonElement);
     cardElement.appendChild(bottomInfElement);
 
+    buttonElement.addEventListener(`click`, () => {
+      removeBook(id);
+    });
+
     mainElement.appendChild(cardElement);
   });
 }
 
-displayLibrary(myLibrary);
+const removeBook = (id) => {
+  myLibrary = myLibrary.filter((book) => book["id"] != id);
+  mainElement.innerHTML = ``;
+  displayLibrary(myLibrary);
+};
 
-// Rivise this part of code
-const theHobbit = new Book(
-  "The hobbit",
-  `J.R.R Tolkien`,
-  `295`,
-  `not read yet`
-);
+displayLibrary(myLibrary);
 
 // Open a modal for add a new book
 openModal.addEventListener("click", (e) => {
@@ -164,6 +174,7 @@ closeModal.addEventListener(`click`, (e) => {
   modal.classList.remove(`modal--show`);
 });
 
+/* Add new book*/ 
 bookForm.addEventListener(`submit`, (e) => {
   e.preventDefault();
   alert(bookTitle.value);
@@ -176,10 +187,6 @@ bookForm.addEventListener(`submit`, (e) => {
   addBookToLibrary(title, author, pages, status);
 
   displayLibrary(myLibrary);
-
-  /*localStorage.setItem(`title`, title);
-  localStorage.setItem(`author`, author);
-  localStorage.setItem(`pages`, pages);
-  localStorage.setItem(`status`, status);*/
-  // console.dir(bookTitle);
 });
+
+
