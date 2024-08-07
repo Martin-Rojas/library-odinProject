@@ -4,6 +4,13 @@ const closeModal = document.querySelector(`.close-model`);
 const modal = document.querySelector(`.modal`);
 const bookTitle = document.querySelector(`#book-title`);
 const bookForm = document.querySelector(`#book-form`);
+const readCountElement = document.querySelector(`#read-number`);
+const noReadCountElement = document.querySelector(`#unread-number`);
+const totalBooksElement = document.querySelector(`#total-books`);
+
+let readCount = 0;
+let noReadCount = 0;
+let totalBooks = 0;
 
 let myLibrary = [
   {
@@ -62,27 +69,6 @@ let myLibrary = [
     numberOfPages: `448`,
     read: `not read yet`,
   },
-  {
-    id: "B" + Math.round(1000 * Math.random(1)),
-    title: `The Alchemist`,
-    author: `Paulo Coelho`,
-    numberOfPages: `163`,
-    read: `read`,
-  },
-  {
-    id: "B" + Math.round(1000 * Math.random(1)),
-    title: `The Da Vinci Code`,
-    author: `Dan Brown`,
-    numberOfPages: `689`,
-    read: `not read yet`,
-  },
-  {
-    id: "B" + Math.round(1000 * Math.random(1)),
-    title: `Harry Potter and the Philosopher's Stone`,
-    author: `J.K Rowling`,
-    numberOfPages: `223`,
-    read: `read`,
-  },
 ];
 
 function Book(title, author, numberOfPages, read) {
@@ -96,12 +82,37 @@ function Book(title, author, numberOfPages, read) {
 function addBookToLibrary(title, author, numberOfPages, read) {
   let newBook = new Book(title, author, numberOfPages, read);
   mainElement.innerHTML = ``;
+  readCount = 0;
+  noReadCount = 0;
+  totalBooks = 0;
   myLibrary.push(newBook);
+}
+
+function changeStatus(book) {
+  if (book.read === `read`) {
+    // btn.innerText = `not read yet`;
+    book.read = `not read yet`;
+  } else {
+    // btn.innerText = `read`;
+    book.read = `read`;
+  }
+
+  mainElement.innerHTML = ``;
+  readCount = 0;
+  noReadCount = 0;
+  totalBooks = 0;
+  displayLibrary(myLibrary);
 }
 
 function displayLibrary(library) {
   library.forEach((book) => {
     let id = book.id;
+
+    if (book.read === `read`) {
+      readCount += 1;
+    } else {
+      noReadCount += 1;
+    }
 
     const cardElement = document.createElement("div");
     cardElement.className = "card";
@@ -119,13 +130,15 @@ function displayLibrary(library) {
     authorElement.appendChild(authorSpanElement);
     cardElement.appendChild(authorElement);
 
-    const statusElement = document.createElement(`p`);
-    statusElement.innerText = `Status: `;
-    const statusSpanElement = document.createElement("span");
-    statusElement.innerText = `${book.read}`;
-    statusElement.setAttribute("id", "status");
-    statusElement.appendChild(statusSpanElement);
-    cardElement.appendChild(statusElement);
+    const btnStatusElement = document.createElement(`button`);
+    btnStatusElement.innerText = `${book.read}`;
+    btnStatusElement.setAttribute("id", "btn-status");
+    btnStatusElement.className = `btn btn-status`;
+    cardElement.appendChild(btnStatusElement);
+
+    btnStatusElement.addEventListener(`click`, () => {
+      changeStatus(book);
+    });
 
     const bottomInfElement = document.createElement(`div`);
     bottomInfElement.className = `bottom-info`;
@@ -151,12 +164,20 @@ function displayLibrary(library) {
     });
 
     mainElement.appendChild(cardElement);
+    totalBooks += 1;
   });
+
+  readCountElement.innerHTML = readCount;
+  noReadCountElement.innerHTML = noReadCount;
+  totalBooksElement.innerHTML = totalBooks;
 }
 
 const removeBook = (id) => {
   myLibrary = myLibrary.filter((book) => book["id"] != id);
   mainElement.innerHTML = ``;
+  readCount = 0;
+  noReadCount = 0;
+  totalBooks = 0;
   displayLibrary(myLibrary);
 };
 
@@ -174,11 +195,9 @@ closeModal.addEventListener(`click`, (e) => {
   modal.classList.remove(`modal--show`);
 });
 
-/* Add new book*/ 
+/* Add new book*/
 bookForm.addEventListener(`submit`, (e) => {
   e.preventDefault();
-  alert(bookTitle.value);
-  console.log(document.forms[0].bookTitle.value);
   let title = document.forms[0].bookTitle.value;
   let author = document.forms[0].bookAuthor.value;
   let pages = document.forms[0].pages.value;
@@ -188,5 +207,3 @@ bookForm.addEventListener(`submit`, (e) => {
 
   displayLibrary(myLibrary);
 });
-
-

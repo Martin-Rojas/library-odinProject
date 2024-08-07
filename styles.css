@@ -9,6 +9,45 @@ body {
   background-color: #f0eef1;
 }
 
+.btn-status {
+  background: #ff4742;
+  border: 1px solid #ff4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 12px;
+  height: 15px;
+  margin-bottom: 8px;
+  min-height: 40px;
+  outline: 0;
+  padding: 2px 10px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.btn-status:hover,
+.btn-status:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #ff4742;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.btn-status:active {
+  opacity: 0.5;
+}
+
 .modal {
   border: 3px solid red;
   display: flex;
@@ -186,6 +225,17 @@ main {
 .card h2,
 p {
   margin-bottom: 10px;
+}
+
+.card .status-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .status-container i {
+  margin-left: 5px;
 }
 
 .card .bottom-info {
