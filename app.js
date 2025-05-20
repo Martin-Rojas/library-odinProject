@@ -92,13 +92,156 @@ class BookClass {
     }
   }
 
-  get statusBook(){
+  get statusBook() {
     return this.read;
   }
 }
 
+class Library {
+  constructor() {
+    //this.books = [];
+    this.books = [
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `The hobbit`,
+        author: `J.R.R Tolkien`,
+        numberOfPages: `800`,
+        read: `not read yet`,
+      },
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `Harry Potter and the Philosopher's Stone`,
+        author: `J.K Rowling`,
+        numberOfPages: `223`,
+        read: `read`,
+      },
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `A Tale of Two Cities`,
+        author: `Charles Dickens`,
+        numberOfPages: `448`,
+        read: `not read yet`,
+      },
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `The Alchemist`,
+        author: `Paulo Coelho`,
+        numberOfPages: `163`,
+        read: `read`,
+      },
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `The Da Vinci Code`,
+        author: `Dan Brown`,
+        numberOfPages: `689`,
+        read: `not read yet`,
+      },
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `The hobbit`,
+        author: `J.R.R Tolkien`,
+        numberOfPages: `800`,
+        read: `not read yet`,
+      },
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `Harry Potter and the Philosopher's Stone`,
+        author: `J.K Rowling`,
+        numberOfPages: `223`,
+        read: `read`,
+      },
+      {
+        id: "B" + Math.round(1000 * Math.random(1)),
+        title: `A Tale of Two Cities`,
+        author: `Charles Dickens`,
+        numberOfPages: `448`,
+        read: `not read yet`,
+      },
+    ];
+    this.readCount = 0;
+    this.noReadCount = 0;
+    this.totalBooks = 0;
+  }
 
-/*Ends new code classes*/
+  get getReadCount() {
+    return readCount;
+  }
+
+  get getNoReadCount() {
+    return noReadCount;
+  }
+
+  get getTotalBooks() {
+    return totalBooks;
+  }
+  addBookToLibrary(newBook) {
+    this.books.push(newBook);
+    if (newBook.read === "read") {
+      readCount++;
+    } else {
+      noReadCount++;
+    }
+    totalBooks++;
+  }
+
+  removeBook(bookId) {
+    this.books = this.books.filter((book) => book["id"] != bookId);
+    totalBooks--;
+  }
+  displayLibrary() {
+    totalBooks = 0;
+    readCount = 0;
+    noReadCount = 0;
+    this.books.forEach((book, index) => {
+      console.log(`${index + 1}. ${book.title} ${book.id} read status: ${book.read}`);
+      if (book.read === `read`) {
+        readCount += 1;
+      } else {
+        noReadCount += 1;
+      }
+      totalBooks++;
+    });
+  }
+}
+
+// Create instance of Library
+const myLibraryClass = new Library();
+
+// Display initial library
+console.log("Initial library:");
+myLibraryClass.displayLibrary();
+
+// Add a new book
+const newBookClass = {
+  id: "B" + Math.round(1000 * Math.random()),
+  title: "1984",
+  author: "George Orwell",
+  numberOfPages: 328,
+  read: "read",
+};
+
+myLibraryClass.addBookToLibrary(newBookClass);
+
+console.log("\nAfter adding a new book:");
+myLibraryClass.displayLibrary();
+
+// Remove a book (by ID)
+const idToRemove = myLibraryClass.books[1].id; // Remove second book
+myLibraryClass.removeBook(idToRemove);
+
+const idToRemove2 = myLibraryClass.books[0].id; // Remove second book
+myLibraryClass.removeBook(idToRemove2);
+
+console.log(`\nAfter removing book with ID: ${idToRemove}`);
+myLibraryClass.displayLibrary();
+
+// myLibraryClass.getNoReadCount();
+// myLibraryClass.getReadCount();
+console.log(myLibraryClass.getTotalBooks);
+console.log(myLibraryClass.getNoReadCount + `NO READ`);
+console.log(myLibraryClass.getReadCount + 'READ');
+
+/*Ends new code classes ---------------------------------------------------------*/
 
 function Book(title, author, numberOfPages, read) {
   this.id = "B" + Math.round(1000 * Math.random(1));
