@@ -1,0 +1,129 @@
+class Library {
+  constructor() {
+    //this.books = [];
+    this.books = [
+      {
+        id: this.generateId(),
+        title: `The hobbit`,
+        author: `J.R.R Tolkien`,
+        numberOfPages: `800`,
+        read: `not read yet`,
+      },
+      {
+        id: this.generateId(),
+        title: `Harry Potter and the Philosopher's Stone`,
+        author: `J.K Rowling`,
+        numberOfPages: `223`,
+        read: `read`,
+      },
+      {
+        id: this.generateId(),
+        title: `A Tale of Two Cities`,
+        author: `Charles Dickens`,
+        numberOfPages: `448`,
+        read: `not read yet`,
+      },
+      {
+        id: this.generateId(),
+        title: `The Alchemist`,
+        author: `Paulo Coelho`,
+        numberOfPages: `163`,
+        read: `read`,
+      },
+      {
+        id: this.generateId(),
+        title: `The Da Vinci Code`,
+        author: `Dan Brown`,
+        numberOfPages: `689`,
+        read: `not read yet`,
+      },
+      {
+        id: this.generateId(),
+        title: `The hobbit`,
+        author: `J.R.R Tolkien`,
+        numberOfPages: `800`,
+        read: `not read yet`,
+      },
+      {
+        id: this.generateId(),
+        title: `Harry Potter and the Philosopher's Stone`,
+        author: `J.K Rowling`,
+        numberOfPages: `223`,
+        read: `read`,
+      },
+      {
+        id: this.generateId(),
+        title: `A Tale of Two Cities`,
+        author: `Charles Dickens`,
+        numberOfPages: `448`,
+        read: `not read yet`,
+      },
+    ];
+  }
+
+  generateId() {
+    return "B" + Math.round(1000 * Math.random(1));
+  }
+
+  get getReadCount() {
+    return this.books.filter((book) => book.read == "read").length;
+  }
+
+  get getNoReadCount() {
+    return this.books.filter((book) => book.read !== "read").length;
+  }
+
+  get getTotalBooks() {
+    return this.books.length;
+  }
+
+  addBookToLibrary(newBook) {
+    if (!newBook.title || !newBook.author || !newBook.numberOfPages || !newBook.read) {
+      console.log(`Missing book data`);
+      return;
+    }
+    newBook.id = this.generateId();
+    // newBook.read = this.newBook.read || "not read yet";
+    this.books.push(newBook);
+    console.log(`Book added: ${newBook.title}`);
+  }
+
+  removeBook(bookId) {
+    const originalLength = this.books.length;
+    this.books = this.books.filter((book) => book["id"] != bookId);
+
+    if (this.books.length < originalLength) {
+      console.log(`Book with ID ${bookId} removed.`);
+    } else {
+      console.warn(`No book found with ID ${bookId}.`);
+    }
+  }
+
+  displayLibrary() {
+    this.books.forEach((book, index) => {
+      console.log(
+        `${index + 1}. ${book.title} ${book.id} read status: ${book.read}`
+      );
+    });
+
+    console.log(
+      `\n📊 Stats: Total Books: ${this.getTotalBooks} Read Books: ${this.getReadCount} No Read Books: ${this.getNoReadCount}`
+    );
+  }
+}
+
+
+const myLibrary2 = new Library();
+
+myLibrary2.displayLibrary();
+
+myLibrary2.addBookToLibrary({
+  title: "Clean Code",
+  author: "Robert C. Martin",
+  numberOfPages: 464,
+  read: "read",
+});
+
+myLibrary2.removeBook("B123456"); // Try a real ID from your display output
+
+myLibrary2.displayLibrary();
