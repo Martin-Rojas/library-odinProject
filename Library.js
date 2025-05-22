@@ -1,6 +1,5 @@
-class Library {
+export default class Library {
   constructor() {
-    //this.books = [];
     this.books = [
       {
         id: this.generateId(),
