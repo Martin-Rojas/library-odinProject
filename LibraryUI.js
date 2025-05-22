@@ -34,8 +34,13 @@ class LibraryUI {
 
   showStatistics() {}
 
-  getInputFromForm() {
-    return this.titleInput.value;
+  getInputForm() {
+    return {
+      title: this.titleInput.value,
+      author: this.authorInput.value,
+      numberOfPages: this.pagesInput.value,
+      read: this.statusInput.value,
+    };
   }
 
   cleanDataForm() {}

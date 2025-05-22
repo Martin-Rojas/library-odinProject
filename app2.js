@@ -8,7 +8,6 @@ ui.showModal();
 
 ui.bookForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(ui.getInputFromForm());
+  console.log(ui.getInputForm());
 });
 
-console.log(ui.modal);
