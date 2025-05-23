@@ -1,3 +1,5 @@
+import Library from "./Library.js";
+
 class LibraryUI {
   constructor() {
     this._modal = document.querySelector(`.modal`);
@@ -43,7 +45,19 @@ class LibraryUI {
     };
   }
 
-  cleanDataForm() {}
+  cleanDataForm() {
+    this.titleInput.value = "";
+    this.authorInput.value = "";
+    this.pagesInput.value = "";
+    this.statusInput.value = "read";
+  }
+
+  showStats() {
+    const myLibrary = new Library();
+    this._totalBooksElement.innerHTML = myLibrary.getTotalBooks;
+    this._readCountElement.innerHTML = myLibrary.getReadCount;
+    this._noReadCountElement.innerHTML = myLibrary.getNoReadCount;
+  }
 }
 
 export { LibraryUI };
