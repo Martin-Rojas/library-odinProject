@@ -1,7 +1,9 @@
-import Library from "./Library.js";
+
 
 class LibraryUI {
-  constructor() {
+  constructor(libraryInstance) {
+    this.library = libraryInstance;
+
     this._modal = document.querySelector(`.modal`);
     this._openModal = document.querySelector(`.add-book`);
     this._closeModal = document.querySelector(`.close-model`);
@@ -53,10 +55,9 @@ class LibraryUI {
   }
 
   showStats() {
-    const myLibrary = new Library();
-    this._totalBooksElement.innerHTML = myLibrary.getTotalBooks;
-    this._readCountElement.innerHTML = myLibrary.getReadCount;
-    this._noReadCountElement.innerHTML = myLibrary.getNoReadCount;
+    this._totalBooksElement.innerHTML = this.library.getTotalBooks;
+    this._readCountElement.innerHTML = this.library.getReadCount;
+    this._noReadCountElement.innerHTML = this.library.getNoReadCount;
   }
 }
 

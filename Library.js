@@ -77,12 +77,13 @@ export default class Library {
   }
 
   addBookToLibrary(newBook) {
-    if (!newBook.title || !newBook.author || !newBook.numberOfPages || !newBook.read) {
-      console.log(`Missing book data`);
-      return;
-    }
-    newBook.id = this.generateId();
+    // if (!newBook.title || !newBook.author || !newBook.numberOfPages || !newBook.read) {
+    //   console.log(`Missing book data`);
+    //   return;
+    // }
+    //newBook.id = this.generateId();
     // newBook.read = this.newBook.read || "not read yet";
+    console.log(newBook.numberOfPages + " "+ newBook.author + "inside of ADD BOOK LIBRARY");
     this.books.push(newBook);
     console.log(`Book added: ${newBook.title}`);
   }
@@ -111,18 +112,17 @@ export default class Library {
   }
 }
 
+// const myLibrary2 = new Library();
 
-const myLibrary2 = new Library();
+// myLibrary2.displayLibrary();
 
-myLibrary2.displayLibrary();
+// myLibrary2.addBookToLibrary({
+//   title: "Clean Code",
+//   author: "Robert C. Martin",
+//   numberOfPages: 464,
+//   read: "read",
+// });
 
-myLibrary2.addBookToLibrary({
-  title: "Clean Code",
-  author: "Robert C. Martin",
-  numberOfPages: 464,
-  read: "read",
-});
+// myLibrary2.removeBook("B123456"); // Try a real ID from your display output
 
-myLibrary2.removeBook("B123456"); // Try a real ID from your display output
-
-myLibrary2.displayLibrary();
+// myLibrary2.displayLibrary();
