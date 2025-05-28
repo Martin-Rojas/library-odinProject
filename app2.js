@@ -28,4 +28,5 @@ ui.bookForm.addEventListener("submit", (e) => {
 
   myLibrary.displayLibrary();
   ui.showStats();
+  ui.displayLibraryUI()
 });

@@ -1,8 +1,8 @@
-
-
 class LibraryUI {
   constructor(libraryInstance) {
     this.library = libraryInstance;
+
+    this.ElementMain = document.querySelector(`#main`);
 
     this._modal = document.querySelector(`.modal`);
     this._openModal = document.querySelector(`.add-book`);
@@ -58,6 +58,23 @@ class LibraryUI {
     this._totalBooksElement.innerHTML = this.library.getTotalBooks;
     this._readCountElement.innerHTML = this.library.getReadCount;
     this._noReadCountElement.innerHTML = this.library.getNoReadCount;
+  }
+
+  displayLibraryUI() {
+    this.library.books.forEach((book) => {
+      console.log(`${book.title}`);
+
+      const cardElement = document.createElement("div");
+      cardElement.className = "card";
+
+      const h2Element = document.createElement("h2");
+      h2Element.setAttribute(`id`, `title`);
+      h2Element.innerText = book.title;
+      cardElement.appendChild(h2Element);
+
+      return this.ElementMain.appendChild(cardElement);
+    });
+    
   }
 }
 
