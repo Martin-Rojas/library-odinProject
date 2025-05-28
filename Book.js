@@ -1,5 +1,5 @@
 export default class BookClass {
-  constructor(title, author, numberOfPages, read) {
+  constructor({ title, author, numberOfPages, read }) {
     this.id = crypto.randomUUID();
     this.title = title;
     this.author = author;
@@ -19,5 +19,15 @@ export default class BookClass {
 
   get statusBook() {
     return this.read;
+  }
+
+  getNewBook() {
+    return {
+      id: this.id,
+      title: this.title,
+      author: this.author,
+      numberOfPages: this.numberOfPages,
+      read: this.read,
+    };
   }
 }
