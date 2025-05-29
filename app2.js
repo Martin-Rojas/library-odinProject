@@ -10,6 +10,7 @@ const ui = new LibraryUI(myLibrary);
 ui.showStats();
 
 ui.showModal();
+ui.displayLibraryUI();
 
 ui.bookForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -21,12 +22,11 @@ ui.bookForm.addEventListener("submit", (e) => {
 
   const newBook = new Book(bookData);
 
-  console.log(newBook.getNewBook().author + "New book inside the submit event");
   ui.cleanDataForm();
 
-  myLibrary.addBookToLibrary(newBook.getNewBook());
+  myLibrary.addBookToLibrary(newBook);
 
   myLibrary.displayLibrary();
   ui.showStats();
-  ui.displayLibraryUI()
+  ui.displayLibraryUI();
 });

@@ -1,62 +1,64 @@
+import BookClass from "./Book.js";
+
 export default class Library {
   constructor() {
     this.books = [
-      {
+      new BookClass({
         id: this.generateId(),
         title: `The hobbit`,
         author: `J.R.R Tolkien`,
         numberOfPages: `800`,
         read: `not read yet`,
-      },
-      {
+      }),
+      new BookClass({
         id: this.generateId(),
         title: `Harry Potter and the Philosopher's Stone`,
         author: `J.K Rowling`,
         numberOfPages: `223`,
         read: `read`,
-      },
-      {
+      }),
+      new BookClass({
         id: this.generateId(),
         title: `A Tale of Two Cities`,
         author: `Charles Dickens`,
         numberOfPages: `448`,
         read: `not read yet`,
-      },
-      {
+      }),
+      new BookClass({
         id: this.generateId(),
         title: `The Alchemist`,
         author: `Paulo Coelho`,
         numberOfPages: `163`,
         read: `read`,
-      },
-      {
+      }),
+      new BookClass({
         id: this.generateId(),
         title: `The Da Vinci Code`,
         author: `Dan Brown`,
         numberOfPages: `689`,
         read: `not read yet`,
-      },
-      {
+      }),
+      new BookClass({
         id: this.generateId(),
         title: `The hobbit`,
         author: `J.R.R Tolkien`,
         numberOfPages: `800`,
         read: `not read yet`,
-      },
-      {
+      }),
+      new BookClass({
         id: this.generateId(),
         title: `Harry Potter and the Philosopher's Stone`,
         author: `J.K Rowling`,
         numberOfPages: `223`,
         read: `read`,
-      },
-      {
+      }),
+      new BookClass({
         id: this.generateId(),
         title: `A Tale of Two Cities`,
         author: `Charles Dickens`,
         numberOfPages: `448`,
         read: `not read yet`,
-      },
+      }),
     ];
   }
 
@@ -76,16 +78,18 @@ export default class Library {
     return this.books.length;
   }
 
-  addBookToLibrary(newBook) {
+  addBookToLibrary(bookInstance) {
     // if (!newBook.title || !newBook.author || !newBook.numberOfPages || !newBook.read) {
     //   console.log(`Missing book data`);
     //   return;
     // }
     //newBook.id = this.generateId();
     // newBook.read = this.newBook.read || "not read yet";
-    console.log(newBook.numberOfPages + " "+ newBook.author + "inside of ADD BOOK LIBRARY");
-    this.books.push(newBook);
-    console.log(`Book added: ${newBook.title}`);
+
+    // this.books.push(newBook);
+    // console.log(`Book added: ${newBook.title}`);
+    this.books.push(bookInstance);
+    console.log(`Book added: ${bookInstance.title}`);
   }
 
   removeBook(bookId) {

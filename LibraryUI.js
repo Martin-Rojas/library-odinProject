@@ -60,7 +60,13 @@ class LibraryUI {
     this._noReadCountElement.innerHTML = this.library.getNoReadCount;
   }
 
+  clearLibraryUI() {
+    return (this.ElementMain = "");
+  }
+
   displayLibraryUI() {
+    //   Clear previous cards
+    this.ElementMain.innerHTML = "";
     this.library.books.forEach((book) => {
       console.log(`${book.title}`);
 
@@ -72,9 +78,28 @@ class LibraryUI {
       h2Element.innerText = book.title;
       cardElement.appendChild(h2Element);
 
+      const authorElement = document.createElement("p");
+      authorElement.innerText = "By ";
+      const authorSpanElement = document.createElement("span");
+      authorSpanElement.setAttribute(`id`, `author`);
+      authorSpanElement.innerHTML = `${book.author}`;
+      authorElement.appendChild(authorSpanElement);
+      cardElement.appendChild(authorElement);
+
+      const btnStatusElement = document.createElement(`button`);
+      btnStatusElement.innerText = `${book.read}`;
+      btnStatusElement.setAttribute("id", "btn-status");
+      btnStatusElement.className = `btn btn-status`;
+      cardElement.appendChild(btnStatusElement);
+
+      btnStatusElement.addEventListener(`click`, () => {
+        book.toggleReadStatus = book.read; // call setter
+        this.displayLibraryUI(); // re-render UI
+        this.showStats(); // update stats
+      });
+
       return this.ElementMain.appendChild(cardElement);
     });
-    
   }
 }
 
