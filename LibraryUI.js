@@ -36,8 +36,6 @@ class LibraryUI {
     });
   }
 
-  showStatistics() {}
-
   getInputForm() {
     return {
       title: this.titleInput.value,
@@ -58,10 +56,6 @@ class LibraryUI {
     this._totalBooksElement.innerHTML = this.library.getTotalBooks;
     this._readCountElement.innerHTML = this.library.getReadCount;
     this._noReadCountElement.innerHTML = this.library.getNoReadCount;
-  }
-
-  clearLibraryUI() {
-    return (this.ElementMain = "");
   }
 
   displayLibraryUI() {

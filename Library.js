@@ -79,17 +79,18 @@ export default class Library {
   }
 
   addBookToLibrary(bookInstance) {
-    // if (!newBook.title || !newBook.author || !newBook.numberOfPages || !newBook.read) {
-    //   console.log(`Missing book data`);
-    //   return;
-    // }
-    //newBook.id = this.generateId();
-    // newBook.read = this.newBook.read || "not read yet";
+    if (
+      !bookInstance.title ||
+      !bookInstance.author ||
+      !bookInstance.numberOfPages ||
+      !bookInstance.read
+    ) {
+      console.log(`Missing book data`);
+      return;
+    }
 
-    // this.books.push(newBook);
-    // console.log(`Book added: ${newBook.title}`);
     this.books.push(bookInstance);
-    console.log(`Book added: ${bookInstance.title}`);
+    // console.log(`Book added: ${bookInstance.title}`);
   }
 
   removeBook(bookId) {
@@ -115,18 +116,3 @@ export default class Library {
     );
   }
 }
-
-// const myLibrary2 = new Library();
-
-// myLibrary2.displayLibrary();
-
-// myLibrary2.addBookToLibrary({
-//   title: "Clean Code",
-//   author: "Robert C. Martin",
-//   numberOfPages: 464,
-//   read: "read",
-// });
-
-// myLibrary2.removeBook("B123456"); // Try a real ID from your display output
-
-// myLibrary2.displayLibrary();

@@ -20,7 +20,8 @@ export default class BookClass {
   get statusBook() {
     return this.read;
   }
-
+  
+  /* It will return a plain object not a instance on the class Book*/
   getNewBook() {
     return {
       id: this.id,
