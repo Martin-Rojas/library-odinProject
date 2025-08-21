@@ -261,3 +261,7 @@ p {
 .delete i {
   color: red;
 }
+
+.invalid {
+  outline: red solid 3px;
+}

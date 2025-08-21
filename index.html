@@ -26,32 +26,20 @@
           <p>Unread: <span id="unread-number">1</span></p>
         </div>
       </article>
-      <main id="main">
-        <!-- <div class="card">
-          <h2 id="title">Harry Potter and the Order of the Phoenix</h2>
-          <p>By <span id="author">J.K Rowling</span></p>
-          <div class="status-container">
-             <p>status: <span id="status">reading</span></p>
-            <i class="fa-solid fa-toggle-on"></i> -->
-            <!-- <button id="btn-status" class="btn btn-status">read</button>
-          </div>
-          <div class="bottom-info">
-            <p><span id="pages-number">800</span> pages</p>
-            <button class="delete"><i class="fa-solid fa-trash"></i></button>
-          </div>
-        </div> --> 
-      </main>
+      <main id="main"></main>
 
       <section class="modal">
         <div class="modal-container">
           <h2>New Book</h2>
-          <form action="#" method="get" id="book-form">
+          <form action="#" method="get" id="book-form" novalidate>
             <label for="book-title">Title</label>
+
             <input
               type="text"
               id="book-title"
               name="bookTitle"
               placeholder="Title.."
+              required
             />
 
             <label for="book-author">Author</label>
@@ -60,10 +48,11 @@
               id="book-author"
               name="bookAuthor"
               placeholder="Author.."
+              required
             />
 
             <label for="pages">Pages</label>
-            <input type="text" id="pages" name="pages" placeholder="Pages.." />
+            <input type="text" id="pages" name="pages" placeholder="Pages.." required/>
 
             <label for="status">Status</label>
             <select id="status" name="status">
