@@ -17,6 +17,9 @@ class LibraryUI {
     this.authorInput = document.querySelector("#book-author");
     this.pagesInput = document.querySelector("#pages");
     this.statusInput = document.querySelector("#status");
+
+    // validation it has to be active all the time
+    this.setupValidation();
   }
 
   get modal() {
@@ -45,6 +48,71 @@ class LibraryUI {
     };
   }
 
+  setupValidation() {
+    const liveClear = (el) => {
+      el.addEventListener("input", () => {
+        el.setCustomValidity("");
+        el.classList.remove("invalid");
+      });
+    };
+
+    [this.titleInput, this.authorInput, this.pagesInput].forEach(liveClear);
+  }
+
+  getValidatedInputForm() {
+    // Reset previous custom messages
+    this.titleInput.setCustomValidity("");
+    this.authorInput.setCustomValidity("");
+    this.pagesInput.setCustomValidity("");
+    this.statusInput.setCustomValidity("");
+
+    // validation
+    if (
+      this.titleInput.validity.valueMissing ||
+      this.titleInput.value.trim() === ""
+    ) {
+      this.titleInput.setCustomValidity("⚠️ Title is required!");
+      this.titleInput.classList.add(`invalid`);
+    }
+    // Trigger browser validation popup (and show our custom msg if invalid)
+    if (!this.titleInput.reportValidity()) {
+      return null; // stop if invalid
+    }
+
+    if (
+      this.authorInput.validity.valueMissing ||
+      this.authorInput.value.trim() === ""
+    ) {
+      this.authorInput.setCustomValidity("⚠️ Author is required!");
+      this.authorInput.classList.add(`invalid`);
+    }
+    if (!this.authorInput.reportValidity()) {
+      return null;
+    }
+
+    if (
+      this.pagesInput.validity.valueMissing ||
+      this.pagesInput.value.trim() === ""
+    ) {
+      this.pagesInput.setCustomValidity("⚠️ Number of pages is required!");
+      this.pagesInput.classList.add(`invalid`);
+    }
+    if (this.pagesInput.value <= 0) {
+      this.pagesInput.setCustomValidity(`Pages shoul be grather than zero`);
+      this.pagesInput.classList.add(`invalid`);
+    }
+    if (!this.pagesInput.reportValidity()) {
+      return null;
+    }
+
+    return {
+      title: this.titleInput.value.trim(),
+      author: this.authorInput.value.trim(),
+      numberOfPages: this.pagesInput.value,
+      read: this.statusInput.value,
+    };
+  }
+
   cleanDataForm() {
     this.titleInput.value = "";
     this.authorInput.value = "";
@@ -62,8 +130,6 @@ class LibraryUI {
     //   Clear previous cards
     this.ElementMain.innerHTML = "";
     this.library.books.forEach((book) => {
-      console.log(`${book.title}`);
-
       const cardElement = document.createElement("div");
       cardElement.className = "card";
 

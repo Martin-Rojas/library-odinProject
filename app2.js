@@ -14,17 +14,21 @@ ui.displayLibraryUI();
 
 ui.bookForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  //console.log(ui.getInputForm());
-  /* Get data from the form*/
-  const bookData = ui.getInputForm();
+
+  /* Get data from the form original*/
+  //const bookData = ui.getInputForm();
+
+  const bookData = ui.getValidatedInputForm();
+  
+  if (!bookData) return; // 🚨 stop if invalid
+
   /* Pass data and create an instance of Book class*/
   const newBook = new Book(bookData);
   /* Clean data from the form*/
   ui.cleanDataForm();
   /* Pass the instance of the Book class to myLibrary*/
   myLibrary.addBookToLibrary(newBook);
-  /* Display the library */
-  //   myLibrary.displayLibrary();
+
   /* Show the stats from LibraryUI */
   ui.showStats();
   /* Display  the cards from the LibraryUI class*/
